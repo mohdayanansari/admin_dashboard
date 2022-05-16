@@ -2,40 +2,17 @@ import React, { useContext, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../layouts/navbar/Navbar";
 import ImageIcon from "@mui/icons-material/Image";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { alpha, styled } from "@mui/material/styles";
 import { DarkModeContext } from "../../context/darkModeContext";
 // css
 import "./addNew.scss";
 
 const AddNew = () => {
   const { darkMode } = useContext(DarkModeContext);
-  const CssTextField = styled(TextField)({
-    "& label": {
-      color: darkMode ? "white" : "gray",
-    },
-    "& label.Mui-focused": {
-      color: darkMode ? "white" : "gray",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: darkMode ? "white" : "gray",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: darkMode ? "white" : "gray",
-      },
-      "&:hover fieldset": {
-        borderColor: darkMode ? "white" : "gray",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: darkMode ? "white" : "gray",
-      },
-    },
-  });
 
   const [file, setFile] = useState("");
   const [input, setInput] = useState({
@@ -63,7 +40,7 @@ const AddNew = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("USER INPUT::", input);
+    console.log("USER INPUT::", input);
     const url = "https://api.notbot.in/super/setup";
     const config = {
       headers: {
@@ -107,9 +84,9 @@ const AddNew = () => {
               alt=""
             />
           </div>
-          <div className="right">
-            <form onSubmit={handleSubmit}>
-              {/* <div className="formInput">
+          <div className="right pr-[50px]">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[5px]">
+              <div className="formInput">
                 <label htmlFor="file">
                   Image <ImageIcon className="icon" />{" "}
                 </label>
@@ -123,67 +100,93 @@ const AddNew = () => {
                   }}
                   onChange={(e) => setFile(e.target.files[0])}
                 />
-              </div> */}
+              </div>
               {/* ...... */}
-              <CssTextField
-                name="id"
-                value={input.id}
-                onChange={handleChange}
-                id="outlined-basic"
-                label="ID"
-                type="text"
-                required
-                variant="outlined"
-                className={darkMode ? "" : ""}
-                autoComplete="off"
-              />
-              <CssTextField
-                name="userEmail"
-                value={input.userEmail}
-                onChange={handleChange}
-                id="outlined-basic"
-                label="User Email"
-                type="email"
-                variant="outlined"
-                className=" text-field"
-                autoComplete="off"
-              />
-              <CssTextField
-                name="adminEmail"
-                value={input.adminEmail}
-                onChange={handleChange}
-                id="outlined-basic"
-                label="Admin Email"
-                required
-                type="email"
-                variant="outlined"
-                className=" text-field"
-                autoComplete="off"
-              />
-              <CssTextField
-                name="apiKey"
-                value={input.apiKey}
-                onChange={handleChange}
-                id="outlined-basic"
-                label="360 API Key"
-                type="text"
-                required
-                variant="outlined"
-                className=" text-field"
-                autoComplete="off"
-              />
-              <CssTextField
-                name="namespace"
-                value={input.namespace}
-                onChange={handleChange}
-                id="outlined-basic"
-                required
-                label="Namespace"
-                type="text"
-                variant="outlined"
-                className=" text-field"
-                autoComplete="off"
-              />
+              <div className="formInput relative my-4 border-b-2 focus-within:border-blue-500">
+                <label
+                  htmlFor="id"
+                  className="absolute top-0 -z-1 duration-300 origin-0"
+                >
+                  ID
+                </label>
+                <input
+                  type="text"
+                  name="id"
+                  id="id"
+                  value={input.id}
+                  onChange={handleChange}
+                  placeholder="Enter your ID"
+                  className="pl-[20px] block w-full appearance-none focus:outline-none bg-transparent"
+                />
+              </div>
+              <div className="formInput relative my-4 border-b-2 focus-within:border-blue-500">
+                <label
+                  htmlFor="id"
+                  className="absolute top-0 -z-1 duration-300 origin-0"
+                >
+                  User Email
+                </label>
+                <input
+                  type="email"
+                  name="userEmail"
+                  id="userEmail"
+                  value={input.userEmail}
+                  onChange={handleChange}
+                  placeholder="Enter the user email"
+                  className="pl-[85px] block w-full appearance-none focus:outline-none bg-transparent"
+                />
+              </div>
+              <div className="formInput relative my-4 border-b-2 focus-within:border-blue-500">
+                <label
+                  htmlFor="id"
+                  className="absolute top-0 -z-1 duration-300 origin-0"
+                >
+                  Admin Email
+                </label>
+                <input
+                  type="email"
+                  name="adminEmail"
+                  id="adminEmail"
+                  value={input.adminEmail}
+                  onChange={handleChange}
+                  placeholder="Enter the admin email"
+                  className="pl-[95px] block w-full appearance-none focus:outline-none bg-transparent"
+                />
+              </div>
+              <div className="formInput relative my-4 border-b-2 focus-within:border-blue-500">
+                <label
+                  htmlFor="id"
+                  className="absolute top-0 -z-1 duration-300 origin-0"
+                >
+                  Api Key
+                </label>
+                <input
+                  type="text"
+                  name="apiKey"
+                  id="apiKey"
+                  value={input.apiKey}
+                  onChange={handleChange}
+                  placeholder="Enter the api key"
+                  className="pl-[60px] block w-full appearance-none focus:outline-none bg-transparent"
+                />
+              </div>
+              <div className="formInput relative my-4 border-b-2 focus-within:border-blue-500">
+                <label
+                  htmlFor="id"
+                  className="absolute top-0 -z-1 duration-300 origin-0"
+                >
+                  Namespace
+                </label>
+                <input
+                  type="text"
+                  name="namespace"
+                  id="namespace"
+                  value={input.namespace}
+                  onChange={handleChange}
+                  placeholder="Enter the namespace"
+                  className="pl-[90px] block w-full appearance-none focus:outline-none bg-transparent"
+                />
+              </div>
               {/* activated bot field (boolean) */}
               <div className="flex justify-start w-[95%] ">
                 <FormControlLabel
@@ -200,17 +203,24 @@ const AddNew = () => {
                   className="text-field"
                 />
               </div>
-              <CssTextField
-                name="flowId"
-                value={input.flowId}
-                onChange={handleChange}
-                id="outlined-basic"
-                label="Flow ID"
-                type="text"
-                variant="outlined"
-                className=" text-field"
-                autoComplete="off"
-              />
+              <div className="formInput relative my-4 border-b-2 focus-within:border-blue-500">
+                <label
+                  htmlFor="id"
+                  className="absolute top-0 -z-1 duration-300 origin-0"
+                >
+                  Flow Id
+                </label>
+                <input
+                  type="text"
+                  name="flowId"
+                  id="flowId"
+                  value={input.flowId}
+                  onChange={handleChange}
+                  placeholder="Enter the flowID"
+                  className="pl-[60px] block w-full appearance-none focus:outline-none bg-transparent"
+                />
+              </div>
+
               <Button type="submit" variant="contained">
                 Create User
               </Button>

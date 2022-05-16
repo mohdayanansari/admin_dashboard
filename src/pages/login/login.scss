@@ -1,0 +1,15 @@
+.login-container {
+  background-image: url("../../assets/fbg.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  //   border-radius: 10px;
+//   border: 1px solid rgba(255, 255, 255, 0.18);
+}

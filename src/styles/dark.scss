@@ -63,6 +63,10 @@
   input {
     background-color: transparent;
     color: #fff;
+
+    &:focus{
+      outline: none !important;
+    }
   }
 
   .text-field {

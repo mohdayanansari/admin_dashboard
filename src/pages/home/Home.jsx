@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Components
 import Chart from "../../components/chart/Chart";
 import Featured from "../../components/featured/Featured";
@@ -8,8 +8,19 @@ import Widget from "../../components/widget/Widget";
 import Navbar from "../../layouts/navbar/Navbar";
 // CSS
 import "./home.scss";
+// redux
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const isLogin = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    isLogin.loginToken === null && navigate("/login");
+  }, [isLogin, navigate]);
+
+  console.log(isLogin);
   return (
     <div className="home">
       <Sidebar />
