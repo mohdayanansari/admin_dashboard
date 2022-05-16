@@ -20,9 +20,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col login-container pt-5 gap-16 items-center">
+    <div className="flex flex-col login-container pt-5  items-center justify-between">
       {/* -----------Header------------ */}
-      <div className="glass w-[80%] mx-auto p-5 rounded-lg flex">
+      <div className="glass w-[80%] mx-auto p-5 rounded-lg flex mb-[40px]">
         <div className="flex-1">
           <h1 className="text-gray-700 font-bold text-lg">
             NotBot Super Admin Dashboard
