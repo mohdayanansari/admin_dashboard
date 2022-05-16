@@ -25,8 +25,7 @@ const AddNew = () => {
     flowId: "",
   });
 
-  // const token = useSelector((state) => state.auth);
-  const token = "";
+  const token = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     const value =
